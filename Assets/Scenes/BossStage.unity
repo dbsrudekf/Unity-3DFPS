@@ -1577,9 +1577,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3796748704794251268, guid: eeb8e9dc6d6aa83498d18134066d931e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796748704794251268, guid: eeb8e9dc6d6aa83498d18134066d931e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4246486936141292983, guid: eeb8e9dc6d6aa83498d18134066d931e, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006746852339908937, guid: eeb8e9dc6d6aa83498d18134066d931e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8602960608742833376, guid: eeb8e9dc6d6aa83498d18134066d931e, type: 3}
       propertyPath: casingMemoryPool
@@ -1616,6 +1628,14 @@ PrefabInstance:
     - target: {fileID: 2422286298196035163, guid: 8c8c966c23685f0489a4114fc9b1ef21, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773674363551490473, guid: 8c8c966c23685f0489a4114fc9b1ef21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 933479667}
+    - target: {fileID: 4773674363551490473, guid: 8c8c966c23685f0489a4114fc9b1ef21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickShopBtn
       objectReference: {fileID: 0}
     - target: {fileID: 6905296049280396122, guid: 8c8c966c23685f0489a4114fc9b1ef21, type: 3}
       propertyPath: m_Pivot.x

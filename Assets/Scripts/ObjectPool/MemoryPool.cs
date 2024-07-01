@@ -25,8 +25,7 @@ public class MemoryPool
 
     public MemoryPool(GameObject poolObject)
     {
-        //Debug.Log("MemoryPool");
-        //Debug.Log(poolObject);
+
         maxCount = 0;
         activeCount = 0;
         this.poolObject = poolObject;
@@ -40,7 +39,7 @@ public class MemoryPool
     {
         maxCount += increaseCount;
 
-        //Debug.Log(increaseCount);
+
 
         for(int i = 0; i < increaseCount; ++i)
         {
@@ -52,7 +51,7 @@ public class MemoryPool
             poolItem.gameObject.SetActive(false);
 
             poolItemList.Add(poolItem);
-            //Debug.Log(poolItem.gameObject);
+ 
             
         }
 
@@ -61,7 +60,6 @@ public class MemoryPool
     public void DestroyObjects()
     {
 
-        //Debug.Log("Destroy");
         if (poolItemList == null) return;
 
         int count = poolItemList.Count;
@@ -80,7 +78,7 @@ public class MemoryPool
 
         if (maxCount == activeCount)
         {
-            //Debug.Log("activePoolItem");
+
             InstantiateObjects();
         }
 
@@ -107,7 +105,7 @@ public class MemoryPool
     public void DeactivatePoolItem(GameObject removeObject)
     {
 
-        //Debug.Log("DeactivePoolItem");
+
         if (poolItemList == null || removeObject == null) return;
 
         int count = poolItemList.Count;
@@ -132,7 +130,7 @@ public class MemoryPool
 
     public void DeactivateAllPoolItems()
     {
-        //Debug.Log("DeactiveAllPoolItem");
+
         if (poolItemList == null) return;
 
         int count = poolItemList.Count;

@@ -19,15 +19,6 @@ public class ImpactMemoryPool : MonoBehaviour
         }
     }
 
-    public void BossImpactMemory()
-    {
-        SecmemoryPool = new MemoryPool[impactPrefab.Length];
-        for (int i = 0; i < impactPrefab.Length; ++i)
-        {
-            SecmemoryPool[i] = new MemoryPool(impactPrefab[i]);
-        }
-    }
-
 
     public void SpawnImpact(RaycastHit hit)
     {

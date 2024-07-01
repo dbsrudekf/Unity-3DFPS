@@ -108,6 +108,7 @@ public class PlayerHUD : MonoBehaviour, ISaveable
 
         UpdateScoreHUD(status.GetScore());
         bIsMission = false;
+        PlayerCtrl.bIsSetUI = false;
     }
 
     private void Start()

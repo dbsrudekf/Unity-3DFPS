@@ -10,5 +10,12 @@ public class PlayerCollider : MonoBehaviour
         {
             other.GetComponent<ItemBase>().Use(transform.parent.gameObject);
         }
+
+        if(other.gameObject.name == "EnemyBody")
+        {
+
+        }
     }
+
+
 }

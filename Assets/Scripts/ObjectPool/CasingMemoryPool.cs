@@ -10,22 +10,11 @@ public class CasingMemoryPool : MonoBehaviour
     private MemoryPool SecmemoryPool;
     public void Awake()
     {
-        //Debug.Log("casing");
-        //Debug.Log(memoryPool);
+
         memoryPool = new MemoryPool(casingPrefab);
-        //Debug.Log("after" + " " + memoryPool);
-        //BossMemory();
-    }
-
-    public void BossCasingMemory()
-    {
-        //Debug.Log("bossmemory");
-        //Debug.Log(SecmemoryPool);
-        SecmemoryPool = new MemoryPool(casingPrefab);
-        //Debug.Log("after" + " " + SecmemoryPool);
-        //Debug.Log(SecmemoryPool.poolItemList);
 
     }
+
 
 
     public void SpawnCasing(Vector3 position, Vector3 direction)

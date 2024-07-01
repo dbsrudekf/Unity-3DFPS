@@ -17,7 +17,6 @@ public class Casing : MonoBehaviour
 
     public void Setup(MemoryPool pool, Vector3 direction)
     {
-        //DontDestroyOnLoad(this);
 
         rigidbody3D = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();

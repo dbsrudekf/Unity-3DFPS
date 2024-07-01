@@ -49,7 +49,6 @@ public class BossEnemyFSM : MonoBehaviour
 
     private void Awake()
     {
-        
         status = GetComponent<Status>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         meshRenderer = GetComponentInChildren<MeshRenderer>();
@@ -63,7 +62,6 @@ public class BossEnemyFSM : MonoBehaviour
 
     private void OnEnable()
     {
-        //Debug.Log("OnEnable");
         ChangeState(BossEnemyState.Idle);
         Player = GameObject.Find("Player");
         target = Player.transform;
@@ -92,7 +90,6 @@ public class BossEnemyFSM : MonoBehaviour
 
     private IEnumerator Idle()
     {
-        //Debug.Log("Idle");
         StartCoroutine("AutoChangeFromIdleToPersuit");
 
         while (true)
@@ -153,7 +150,6 @@ public class BossEnemyFSM : MonoBehaviour
 
     private IEnumerator Pursuit()
     {
-        Debug.Log("Pursuit");
         while (true)
         {
             navMeshAgent.speed = status.RunSpeed;
@@ -193,7 +189,6 @@ public class BossEnemyFSM : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        Debug.Log("dash");
 
         navMeshAgent.ResetPath();
 
@@ -206,15 +201,21 @@ public class BossEnemyFSM : MonoBehaviour
         while (true)
         {
 
-            Vector3 Targetto = new Vector3(targetPos.x, 0, targetPos.z);
+            Vector3 TargetTo = new Vector3(targetPos.x, 0, targetPos.z);
             Vector3 Bossfrom = new Vector3(transform.position.x, 0, transform.position.z);
+            Vector3 knockbackDirection = (TargetTo - Bossfrom).normalized;
 
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * 20);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * 20); //타겟을 향해 이동
 
-            if ((Targetto - Bossfrom).sqrMagnitude < 0.01f)
+            if ((TargetTo - Bossfrom).sqrMagnitude < 0.01f) //보스몬스터와 타겟과의 거리가 0.01보다 작을 경우 상태변환
             {
+                target.gameObject.GetComponent<PlayerController>().TakeDamage(20);
+                
+                CharacterController targetcharacterController = target.GetComponent<CharacterController>();
+                targetcharacterController.Move(knockbackDirection * 10);
+
                 yield return new WaitForSeconds(3.0f);
-                Debug.Log("3.f");
+
                 ChangeState(BossEnemyState.Idle);
             }
 
@@ -225,7 +226,6 @@ public class BossEnemyFSM : MonoBehaviour
 
     private IEnumerator Teleport()
     {
-        //Debug.Log("Tele");
 
         navMeshAgent.ResetPath();
 
@@ -233,14 +233,13 @@ public class BossEnemyFSM : MonoBehaviour
 
         while(true)
         {
-            //Debug.Log("Telewhile");
             CalculateDistanceToTargetAndSelctState();
 
             yield return new WaitForSeconds(3);
 
             float distance = Random.Range(-4, 4);
 
-            if(distance == 0 || distance == 1 || distance ==2 || distance == 3)
+            if(distance == 0 || distance == 1 || distance ==2 || distance == 3) 
             {
                 distance = 4;
             }
@@ -249,7 +248,7 @@ public class BossEnemyFSM : MonoBehaviour
                 distance = -4;
             }
 
-            Vector3 TelePos = new Vector3(target.position.x + distance, transform.position.y, target.position.z + distance);
+            Vector3 TelePos = new Vector3(target.position.x + distance, transform.position.y, target.position.z + distance); //Target 주위의 일정 위치에 순간이동
 
             transform.position = TelePos;
 
